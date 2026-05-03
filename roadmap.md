@@ -4,7 +4,7 @@ Living doc — updated as direction evolves. The active design plan for short-te
 
 ## Shipped
 
-### Web (`foreignfm-web`)
+### Web (`foreignfm-website`)
 - Multi-show platform foundation (generalized from SMR-only)
 - Show globe with `globe.gl` hex polygons + per-show HTML pins
 - Deck listening experience: 4 view modes (poster / vinyl / disc / iPod)

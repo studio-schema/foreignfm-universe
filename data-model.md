@@ -1,6 +1,6 @@
 # Data Model
 
-Canonical entity definitions, sourced from `foreignfm-web/supabase/migrations/`. Apps in any language consume this schema — Swift, TS, Liquid all just read the same Postgres tables via the Supabase SDK.
+Canonical entity definitions, sourced from `foreignfm-website/supabase/migrations/`. Apps in any language consume this schema — Swift, TS, Liquid all just read the same Postgres tables via the Supabase SDK.
 
 ## Tables
 
@@ -83,6 +83,6 @@ Not yet scheduled. See `roadmap.md`.
 
 ## Where this is implemented
 
-- Migrations: [`foreignfm-web/supabase/migrations/`](https://github.com/studio-schema/foreignfm-web/tree/main/supabase/migrations) — apply with `supabase db push --include-all`
-- TypeScript types: `foreignfm-web/src/lib/types.ts` (and a generated/checked-in copy from Supabase if/when wired up)
+- Migrations: [`foreignfm-website/supabase/migrations/`](https://github.com/studio-schema/foreignfm-website/tree/main/supabase/migrations) — apply with `supabase db push --include-all`
+- TypeScript types: `foreignfm-website/src/lib/types.ts` (and a generated/checked-in copy from Supabase if/when wired up)
 - Swift types (future): generated in `foreignfm-ios` against the same schema

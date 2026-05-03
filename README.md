@@ -6,7 +6,7 @@ Meta-docs and coordination repo for the FOREIGN.FM ecosystem. Source code for ea
 
 | Repo | Status | Stack | Purpose |
 |---|---|---|---|
-| [`foreignfm-web`](https://github.com/studio-schema/foreignfm-web) | Live | SvelteKit + Vercel + Supabase | The website — show globe, deck listening experience, profiles |
+| [`foreignfm-website`](https://github.com/studio-schema/foreignfm-website) | Live | SvelteKit + Vercel + Supabase | The website — show globe, deck listening experience, profiles |
 | `foreignfm-ios` | Planned | Swift / SwiftUI / Supabase Swift SDK | Native iOS companion app |
 | `foreignfm-shop` | Planned | TBD (Shopify Liquid theme or Hydrogen storefront) | Tickets + merch + apparel + vinyl |
 
@@ -19,7 +19,7 @@ The parent folder `~/App Development/foreignfm-universe/` is just a workspace co
 ```
 foreignfm-universe/         ← parent folder (just disk; not itself a repo until this docs repo is initialized)
 ├── foreignfm-universe/      ← THIS repo: docs, architecture, decisions
-├── foreignfm-web/           ← sibling repo: SvelteKit website
+├── foreignfm-website/           ← sibling repo: SvelteKit website
 ├── foreignfm-ios/           ← sibling repo: iOS app (planned)
 └── foreignfm-shop/          ← sibling repo: Shopify (planned)
 ```
@@ -40,4 +40,4 @@ foreignfm-universe/         ← parent folder (just disk; not itself a repo unti
 1. Read [`architecture.md`](./architecture.md) — 5 minutes, gives you the system map.
 2. Skim [`data-model.md`](./data-model.md) — what shows, episodes, profiles look like.
 3. Browse [`decisions/`](./decisions/) — why things are the way they are.
-4. Then `cd ../foreignfm-web && cat CLAUDE.md` for the website specifics.
+4. Then `cd ../foreignfm-website && cat CLAUDE.md` for the website specifics.

@@ -21,7 +21,7 @@ One Supabase Auth instance, three platforms — each uses the appropriate SDK bu
 
 ## Profile sync
 
-- `bootAuth()` (`foreignfm-web/src/lib/auth/session.ts`) loads session on mount and exposes:
+- `bootAuth()` (`foreignfm-website/src/lib/auth/session.ts`) loads session on mount and exposes:
   - `session` — current Supabase session
   - `user` — derived from session
   - `signedIn` — boolean derived
@@ -33,7 +33,7 @@ One Supabase Auth instance, three platforms — each uses the appropriate SDK bu
 Designed so signed-out users still get persistence (localStorage), and signing in later doesn't lose their settings:
 
 1. **Signed out** → all customize state lives in `localStorage` under `foreignfm-customize` (one JSON blob)
-2. **Sign in** → `bootCustomize()` (`foreignfm-web/src/lib/customize/persist.ts`) waits for the profile row, then:
+2. **Sign in** → `bootCustomize()` (`foreignfm-website/src/lib/customize/persist.ts`) waits for the profile row, then:
    - If profile has `customize_design` / `customize_music`, those win (server is source of truth across devices)
    - If profile fields are null but localStorage has data, push localStorage up to the profile (one-time migration)
 3. **On every change** → debounced upsert to `profiles` + immediate localStorage mirror
@@ -59,7 +59,7 @@ Open questions for when iOS ships:
 
 ## Service role usage
 
-`SUPABASE_SERVICE_ROLE_KEY` (in `foreignfm-web/.env`, never committed) is required for:
+`SUPABASE_SERVICE_ROLE_KEY` (in `foreignfm-website/.env`, never committed) is required for:
 - The ingestion script (`scripts/ingest-shows.mjs`) — bulk inserts into `episodes` bypass RLS
 - (Future) admin tools
 

@@ -14,7 +14,7 @@
             ┌─────────────────────┼─────────────────────┐
             │                     │                     │
    ┌────────▼────────┐   ┌────────▼────────┐   ┌────────▼────────┐
-   │  foreignfm-web  │   │  foreignfm-ios  │   │ foreignfm-shop  │
+   │  foreignfm-website  │   │  foreignfm-ios  │   │ foreignfm-shop  │
    │   (SvelteKit)   │   │     (Swift)     │   │  (Shopify TBD)  │
    │   Vercel        │   │   App Store     │   │   Shopify       │
    └─────────────────┘   └─────────────────┘   └─────────────────┘
@@ -28,7 +28,7 @@ See [`decisions/0001-polyrepo-with-meta-docs.md`](./decisions/0001-polyrepo-with
 
 ## What each surface owns
 
-### `foreignfm-web` — the discovery surface
+### `foreignfm-website` — the discovery surface
 - 3D hex-polygon globe of all show stations (one HTML pin per show; click → show page)
 - Deck listening experience: 4 view modes (poster / vinyl / disc / iPod) per show
 - Floating CornerPlayer with custom UI over a hidden SoundCloud iframe
@@ -56,7 +56,7 @@ Supabase is the single source of truth for:
 - **Catalog** (`public.shows`, `public.episodes`)
 - **Future signals** (likes, playback completions, follows — to be added)
 
-Migration files currently live in [`foreignfm-web/supabase/migrations/`](https://github.com/studio-schema/foreignfm-web/tree/main/supabase/migrations) because web is the only consumer today. When iOS ships, we may extract migrations to a dedicated `foreignfm-supabase` repo — or keep them in web with iOS reading the deployed schema. Decision deferred.
+Migration files currently live in [`foreignfm-website/supabase/migrations/`](https://github.com/studio-schema/foreignfm-website/tree/main/supabase/migrations) because web is the only consumer today. When iOS ships, we may extract migrations to a dedicated `foreignfm-supabase` repo — or keep them in web with iOS reading the deployed schema. Decision deferred.
 
 ## Shared assets — current strategy
 
@@ -71,7 +71,7 @@ Resist the urge to extract before there are two real consumers.
 
 | Surface | Deploys via | Triggered by |
 |---|---|---|
-| Web | Vercel | git push to `foreignfm-web` `main` branch |
+| Web | Vercel | git push to `foreignfm-website` `main` branch |
 | iOS | App Store Connect / TestFlight | Xcode archive + upload (manual or fastlane) |
 | Shop | Shopify CLI / Vercel (if Hydrogen) | TBD |
 

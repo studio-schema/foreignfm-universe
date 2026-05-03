@@ -4,7 +4,7 @@
 
 ## Context
 
-FOREIGN.FM started as a single SvelteKit web app (`sashamarie-radio`, later renamed `foreignfm-web`). Plans now include an iOS companion (`foreignfm-ios`) and a Shopify-backed marketplace (`foreignfm-shop`). All three will share one Supabase project — auth, profiles, shows, episodes, future taste signals — so the question came up: should everything live in one monorepo?
+FOREIGN.FM started as a single SvelteKit web app (`sashamarie-radio`, later renamed `foreignfm-website`). Plans now include an iOS companion (`foreignfm-ios`) and a Shopify-backed marketplace (`foreignfm-shop`). All three will share one Supabase project — auth, profiles, shows, episodes, future taste signals — so the question came up: should everything live in one monorepo?
 
 ## Options considered
 
@@ -21,7 +21,7 @@ One repo with `apps/web`, `apps/ios`, `apps/shop`, `packages/shared`, `supabase/
 - Monorepo tooling (Turborepo / Nx / pnpm workspaces) adds cognitive + maintenance overhead with no current payoff (no shared code yet)
 
 ### B. Polyrepo
-Each surface is its own repo: `foreignfm-web`, `foreignfm-ios`, `foreignfm-shop`. Each gets native tooling at root.
+Each surface is its own repo: `foreignfm-website`, `foreignfm-ios`, `foreignfm-shop`. Each gets native tooling at root.
 
 **Pros**: cleanest per-surface ergonomics; independent release cadence; native CI/CD per platform; easier to onboard collaborators per-surface.
 
@@ -48,20 +48,20 @@ Local layout (parent folder `~/App Development/foreignfm-universe/` is just disk
 ```
 foreignfm-universe/
 ├── foreignfm-universe/   ← this docs repo
-├── foreignfm-web/         ← SvelteKit website (live)
+├── foreignfm-website/         ← SvelteKit website (live)
 ├── foreignfm-ios/         ← future iOS app
 └── foreignfm-shop/        ← future Shopify
 ```
 
 ## Consequences
 
-- **Shared backend doesn't require shared code.** Supabase is one cloud project; each app uses its native SDK. Schema lives in `foreignfm-web/supabase/migrations/` until iOS ships and we decide whether to extract to a `foreignfm-supabase` repo.
+- **Shared backend doesn't require shared code.** Supabase is one cloud project; each app uses its native SDK. Schema lives in `foreignfm-website/supabase/migrations/` until iOS ships and we decide whether to extract to a `foreignfm-supabase` repo.
 - **Shared code is deferred.** When duplication becomes painful (likely when iOS lands and brand tokens or a `Show` type need to live in two places), we'll extract a `foreignfm-design` (or similar) npm package. We're not pre-building infrastructure.
 - **Each surface ships on its own cadence.** App Store releases, Vercel deploys, Shopify drops — independent.
 - **The "universe" is documented, not collocated.** This repo is the source of truth for how the system works as a whole.
 
 ## Reversibility
 
-If this turns out wrong (e.g., we discover web + Hydrogen storefront share 80% of components and the cross-repo shuffle is killing us), we can collapse `foreignfm-web` + `foreignfm-shop` into a pnpm workspace monorepo later. iOS would stay separate either way.
+If this turns out wrong (e.g., we discover web + Hydrogen storefront share 80% of components and the cross-repo shuffle is killing us), we can collapse `foreignfm-website` + `foreignfm-shop` into a pnpm workspace monorepo later. iOS would stay separate either way.
 
 The decision is one-way for iOS (no value in collapsing it in), reversible for web + shop.
