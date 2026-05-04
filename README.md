@@ -6,8 +6,8 @@ Meta-docs and coordination repo for the FOREIGN.FM ecosystem. Source code for ea
 
 | Repo | Status | Stack | Purpose |
 |---|---|---|---|
-| [`foreignfm-website`](https://github.com/studio-schema/foreignfm-website) | Live | SvelteKit + Vercel + Supabase | The website — show globe, deck listening experience, profiles |
-| `foreignfm-ios` | Planned | Swift / SwiftUI / Supabase Swift SDK | Native iOS companion app |
+| [`foreignfm-website`](https://github.com/studio-schema/foreignfm-website) | Live | SvelteKit + Vercel + Supabase + MusicKit JS | Web app — globe, deck, manifesto, video, **stream** (Spotify-style web app) |
+| [`foreignfm-ios`](https://github.com/studio-schema/foreignfm-ios) | Live (scaffold) | SwiftUI + Supabase Swift SDK + (planned) MusicKit Swift | Native iOS companion — TabView (Globe / Stream / Events / Library / Profile) |
 | `foreignfm-shop` | Planned | TBD (Shopify Liquid theme or Hydrogen storefront) | Tickets + merch + apparel + vinyl |
 
 All three surfaces share **one Supabase project** — auth, profiles, shows, episodes, and (eventually) playback signals are the same data, regardless of which app you opened it from.
